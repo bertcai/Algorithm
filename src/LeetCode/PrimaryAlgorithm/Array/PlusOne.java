@@ -12,11 +12,11 @@ import java.util.List;
  * 你可以假设除了整数 0 之外，这个整数不会以零开头。
  */
 public class PlusOne {
-    class Solution {
+    static class Solution {
         public int[] plusOne(int[] digits) {
             List<Integer> resultList = new ArrayList<>();
             if (digits[0] == 0) {
-                return new int[]{0};
+                return new int[]{1};
             }
             digits[digits.length - 1] += 1;
             for (int i = digits.length - 1; i >= 0; i--) {
@@ -28,10 +28,13 @@ public class PlusOne {
                     digits[i - 1] += 1;
                 }
             }
+            for (int i = 0; i < digits.length; i++) {
+                resultList.add(digits[i]);
+            }
             int i = 0;
             int size = resultList.size();
             if (resultList.get(0) > 9) {
-                size += size;
+                size += 1;
                 int[] result = new int[size];
                 result[0] = 1;
                 result[1] = 0;

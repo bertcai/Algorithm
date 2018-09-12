@@ -1,7 +1,7 @@
 package SwordToOffer;
 
-public class Solution {
-    public boolean Find(int target, int[][] array) {
+public class Find {
+    public boolean find(int target, int[][] array) {
         int i = 0;
         int j = array[i].length - 1;
         while (i < array.length && j >= 0) {

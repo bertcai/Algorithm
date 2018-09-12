@@ -10,8 +10,8 @@ package SwordToOffer;
 // f(n) =     | 2, (n=2)
 //            | f(n-1)+f(n-2) ,(n>2,n为整数)
 
-public class Solution {
-    public int JumpFloor(int target) {
+public class jumpFloor {
+    public int jumpfloor(int target) {
         if (target == 0) {
             return 0;
         }

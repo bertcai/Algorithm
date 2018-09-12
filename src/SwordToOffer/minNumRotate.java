@@ -2,7 +2,7 @@ package SwordToOffer;
 
 import java.util.ArrayList;
 
-public class Solution {
+public class minNumRotate {
     public int minNumberInRotateArray(int[] array) {
         if (array.length == 0) {
             return 0;

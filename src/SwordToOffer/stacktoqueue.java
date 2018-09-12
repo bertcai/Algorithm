@@ -2,7 +2,7 @@ package SwordToOffer;
 
 import java.util.Stack;
 
-public class Solution {
+public class stacktoqueue {
     Stack<Integer> stack1 = new Stack<Integer>();
     Stack<Integer> stack2 = new Stack<Integer>();
     

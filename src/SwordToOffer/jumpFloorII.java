@@ -4,7 +4,7 @@ package SwordToOffer;// fn = fn-1 + fn-2 + ... f1+f0
 // f5 = f4 + f3 + 1 + 1 + 2 = 4f3
 // fn = 2^(n-3)*f3
 
-public class Solution {
+public class jumpFloorII {
     public int JumpFloorII(int target) {
         if (target == 0) {
             return 0;

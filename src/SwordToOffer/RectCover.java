@@ -2,7 +2,7 @@ package SwordToOffer;
 
 // 依旧是斐波那契数列，这种类型的问题，都是从小往大分解，找规律。
 // js写法同最初
-public class Solution {
+public class RectCover {
     public int RectCover(int target) {
         if (target == 0) {
             return 0;
