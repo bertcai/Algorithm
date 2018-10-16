@@ -39,4 +39,35 @@ public class MinStack {
     public int getMin() {
         return s2.peek();
     }
+
+    class MinStack2 {
+        private int min_val = Integer.MAX_VALUE;
+        private Stack<Integer> s = new Stack<>();
+
+        /**
+         * initialize your data structure here.
+         */
+        public MinStack2() {
+        }
+
+        public void push(int x) {
+            if (x <= min_val) {
+                s.push(min_val);
+                min_val = x;
+            }
+            s.push(x);
+        }
+
+        public void pop() {
+            if (s.pop() == min_val) min_val = s.pop();
+        }
+
+        public int top() {
+            return s.peek();
+        }
+
+        public int getMin() {
+            return min_val;
+        }
+    }
 }
