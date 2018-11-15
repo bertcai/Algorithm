@@ -78,4 +78,17 @@ public class SortTestHelper {
         return res;
     }
 
+    public Integer[] generatoNearlyOrderedArray(int n, int swapTimes) {
+        Integer[] res = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            res[i] = i;
+        }
+
+        for (int i = 0; i < swapTimes; i++) {
+            int temp = (int) (Math.random() * 100);
+            res[n - temp] = (int) (Math.random() * 100);
+        }
+        return res;
+    }
+
 }
