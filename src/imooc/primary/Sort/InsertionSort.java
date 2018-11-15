@@ -19,6 +19,17 @@ public class InsertionSort {
         arr[j] = t;
     }
 
+    public static void sort2(Comparable[] arr, int left, int right) {
+        for (int i = left + 1; i <= right; i++) {
+            int j;
+            Comparable temp = arr[i];
+            for (j = i; j > left && arr[j - 1].compareTo(temp) > 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[j] = temp;
+        }
+    }
+
     public static void main(String[] args) {
         SortTestHelper sortTestHelper = new SortTestHelper();
         int n = 10000;

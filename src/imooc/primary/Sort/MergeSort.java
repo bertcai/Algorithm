@@ -18,10 +18,18 @@ public class MergeSort {
         if (left >= right) {
             return;
         }
+
+        if (right - left <= 15) {
+            InsertionSort.sort2(arr, left, right); // 当数量级比较小的时候，插入排序要比归并更优，所以可以优化
+            return;
+        }
+
         int mid = (left + right) / 2;
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+        if (arr[mid].compareTo(arr[mid + 1]) > 0) { // 当需要归并的数组不是有序的才进行归并操作
+            merge(arr, left, mid, right);
+        }
     }
 
     private static void merge(Comparable[] arr, int left, int mid, int right) {
@@ -53,9 +61,9 @@ public class MergeSort {
     public static void main(String[] args) {
         SortTestHelper sortTestHelper = new SortTestHelper();
         int n = 50000;
-        Integer[] arr1 = sortTestHelper.generateRandomArray(n, 0, n);
+        Integer[] arr1 = sortTestHelper.generatoNearlyOrderedArray(n, 10);
         Integer[] arr2 = sortTestHelper.copyIntArray(arr1);
-        sortTestHelper.testSort("imooc.primary.Sort.SelectSort", arr1);
+        sortTestHelper.testSort("imooc.primary.Sort.InsertionSort", arr1);
         sortTestHelper.testSort("imooc.primary.Sort.MergeSort", arr2);
     }
 }
