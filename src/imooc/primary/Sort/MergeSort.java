@@ -32,19 +32,19 @@ public class MergeSort {
         }
     }
 
-    private static void merge(Comparable[] arr, int left, int mid, int right) {
+    public static void merge(Comparable[] arr, int left, int mid, int right) {
         Comparable[] res;
         res = Arrays.copyOfRange(arr, left, right + 1);
         int i = left;
         int j = mid + 1;
         for (int k = left; k <= right; k++) {
             if (i > mid) {
-                arr[k] = arr[j - left];
+                arr[k] = res[j - left];
                 j++;
                 continue;
             }
             if (j > right) {
-                arr[k] = arr[i - left];
+                arr[k] = res[i - left];
                 i++;
                 continue;
             }
