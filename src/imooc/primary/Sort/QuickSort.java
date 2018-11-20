@@ -12,7 +12,7 @@ public class QuickSort {
         if (r - l < 15) { //待排序数量比较小时使用插入排序优化
             InsertionSort.sort2(arr, l, r);
         }
-        int p = partition(arr, l, r);
+        int p = partition2(arr, l, r);
         quickSort(arr, l, p - 1);
         quickSort(arr, p + 1, r);
     }
@@ -26,10 +26,7 @@ public class QuickSort {
      * @return 中间值得索引
      */
     private static int partition(Comparable[] arr, int l, int r) {
-        int randomIndex = (int) (Math.random() * (r - l)); // 随机取一个数作为中间值索引
-        Comparable temp1 = arr[randomIndex];
-        arr[randomIndex] = arr[l];
-        arr[l] = temp1;
+        swap( arr, l , (int)(Math.random()*(r-l+1))+l ); //选取一个随机数作为中间索引值
         Comparable midValue = arr[l];
         int j = l;
         int i = l + 1;
@@ -47,10 +44,33 @@ public class QuickSort {
         return j;
     }
 
+    private static int partition2(Comparable[] arr, int l, int r) {
+        swap( arr, l , (int)(Math.random()*(r-l+1))+l );
+        Comparable midValue = arr[l];
+
+        int i = l + 1, j = r;
+        while (true) {
+            while (i <= r && arr[i].compareTo(midValue) < 0) i++;
+            while (j >= l + 1 && arr[j].compareTo(midValue) > 0) j--;
+            if (i > j) break;
+            swap(arr, i, j);
+            i++;
+            j--;
+        }
+        swap(arr, l, j);
+        return j;
+    }
+
+    private static void swap(Comparable[] arr, int x, int y) {
+        Comparable temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+    }
+
     public static void main(String[] args) {
         SortTestHelper sortTestHelper = new SortTestHelper();
-        int n = 30;
-        Integer[] arr = sortTestHelper.generateRandomArray(n, 1, n);
+        int n = 1000000;
+        Integer[] arr = sortTestHelper.generateRandomArray(n, 1, 30);
         Integer[] arr2 = sortTestHelper.copyIntArray(arr);
         sortTestHelper.testSort("imooc.primary.Sort.QuickSort", arr);
         sortTestHelper.testSort("imooc.primary.Sort.MergeSort", arr2);
